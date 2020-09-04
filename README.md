@@ -13,10 +13,7 @@ chmod 777 database/database.sqlite
 chmod 777 database
 chmod -R 777 storage
 php artisan migrate
-cd ..
-docker build -t php-base php/
-docker build -t nginx-base nginx/
-docker-compose up
+php artisan serve --port=9000
 ```
 
 ## Symfony

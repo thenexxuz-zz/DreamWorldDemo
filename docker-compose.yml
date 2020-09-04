@@ -1,28 +1,15 @@
 version: '2'
 services:
-#  php:
-#    image: php-base
-#    volumes:
-#      - ./code:/app
-#    working_dir: /app
-#  web:
-#    image: nginx-base
-#    volumes:
-#      - ./code:/app
-#    depends_on:
-#      - php
-#    ports:
-#      - 8000:80
   php:
     image: php-base
     volumes:
-      - ./code-laravel:/app
+      - ./code-symfony:/app
     working_dir: /app
   web:
     image: nginx-base
     volumes:
-      - ./code-laravel:/app
+      - ./code-symfony:/app
     depends_on:
       - php
     ports:
-      - 9000:80
+      - 8000:80
