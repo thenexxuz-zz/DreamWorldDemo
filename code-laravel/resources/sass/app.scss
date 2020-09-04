@@ -6,3 +6,90 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+.navbar {
+    background-color: #062D78;
+}
+
+body {
+    background-color: #a2c2de;
+}
+
+.card-header {
+    background-color: #0C9A9A;
+
+    .make-post, .make-post:hover {
+        position: absolute;
+        right: 8px;
+        top: 8px;
+        border: 1px solid darkgray;
+        padding: 0 4px;
+        border-radius: 9px;
+        background-color: silver;
+        cursor: copy;
+    }
+    .make-post:hover {
+        text-decoration: none;
+        color: white;
+    }
+}
+
+.card-body {
+    border-top: 1px solid silver;
+}
+
+.card-body.post:hover {
+    background-color: darkgray;
+}
+
+.post-title, .post-summary, .post-body, .post-author {
+    pointer-events: none;
+}
+
+.edit {
+    display: none;
+}
+
+.card-body.editable:hover {
+    background-color: lightgray;
+
+    .edit {
+        display: inline-block;
+        position: absolute;
+        right: 10px;
+        border: 1px solid silver;
+        padding: 0 5px;
+        border-radius: 9px;
+        cursor: alias;
+    }
+
+    .edit:hover {
+        text-decoration: none;
+        color: white;
+    }
+}
+
+.post-title {
+    font-weight: bold;
+}
+
+.post-summary {
+    font-style: italic;
+}
+
+.post-author {
+     float: right;
+     margin-top: -30px;
+ }
+
+.post-body {
+    display: none;
+}
+
+.active .post-body {
+    display: inline-block;
+}
+
+.card-body img {
+    width: 100%;
+}

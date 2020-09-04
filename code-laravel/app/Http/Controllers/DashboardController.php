@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -23,6 +24,11 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+        $data = [
+            'my_posts' => Post::query()->where('user_id', '=', auth()->id())->get(),
+            'others_posts' => Post::query()->with('User')->where('user_id', '!=', auth()->id())->get(),
+        ];
+
+        return view('dashboard', $data);
     }
 }

@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::fallback(function() {
+    return view('error.404');
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -20,3 +24,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/dashboard', 'DashboardController@index')->middleware('auth')->name('dashboard');
+Route::get('/post', 'PostController@index')->middleware('auth')->name('post');
+Route::post('/post', 'PostController@store')->middleware('auth')->name('post.store');
+Route::get('/post/{slug}', 'PostController@show')->middleware('auth')->name('post.show');
+Route::put('/post/{slug}', 'PostController@update')->middleware('auth')->name('post.update');
+//Route::delete('/post/{slug}', 'PostController@delete')->middleware('auth')->name('post.delete');
