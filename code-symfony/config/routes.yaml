@@ -1,3 +1,36 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+index:
+    path: /
+    controller: App\Controller\DefaultController::index
+
+login:
+    path: /login
+    controller: App\Controller\SecurityController::login
+    methods: [GET, POST]
+
+logout:
+    path: /logout
+    controller: App\Controller\SecurityController::logout
+    methods: POST
+
+register:
+    path: /register
+    controller: App\Controller\SecurityController::register
+    methods: [ GET, POST ]
+
+dashboard:
+    path: /dashboard
+    controller: App\Controller\PostController::index
+
+post_create:
+    path: /post
+    controller: App\Controller\PostController::create
+    methods: [ GET, POST ]
+
+post_update:
+    path: /post/{slug}
+    controller: App\Controller\PostController::update
+    methods: [ GET, PUT ]
+
+error:
+    path: /error
+    controller: App\Controller\DefaultController::error

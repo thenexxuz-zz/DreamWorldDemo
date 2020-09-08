@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="title">My Posts</div>
+                        <a class="make-post" href="/post">Post</a>
+                    </div>
+                    {% if my_posts %}
+                        {% for post in my_posts %}
+                            <div class="card-body post editable" @click.stop="e => e.target.classList.toggle('active')">
+                                <a class="edit" href="/post/{{ post.slug }}">Edit</a>
+                                <div class="post-title">{{ post.title }}</div>
+                                <div class="post-summary">{{ post.summary }}</div>
+                                <div class="post-body">{{ post.body }}</div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="card-body">
+                            You have not posted anything!
+                        </div>
+                    {% endif %}
+                </div>
+                <br/>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="title">Others Posts</div>
+                    </div>
+                    {% if others_posts %}
+                        {% for post in others_posts %}
+                            <div class="card-body post">
+                                <div class="post-title">{{ post.title }}</div>
+                                <div class="post-summary">{{ post.summary }}</div>
+                                <div class="post-author">{{ post.author }}</div>
+                                <div class="post-body">{{ post.body }}</div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="card-body">
+                            Nobody has posted anything!
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
