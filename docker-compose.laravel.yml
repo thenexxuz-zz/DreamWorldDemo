@@ -1,0 +1,15 @@
+version: '2'
+services:
+  php:
+    image: php-base
+    volumes:
+      - ./code-laravel:/app
+    working_dir: /app
+  web:
+    image: nginx-base
+    volumes:
+      - ./code-laravel:/app
+    depends_on:
+      - php
+    ports:
+      - 8000:80
